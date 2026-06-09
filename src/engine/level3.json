@@ -1,0 +1,38 @@
+{
+  "id": "level_3",
+  "name": "The Swap",
+  "bpm": 128,
+  "totalBars": 32,
+  "audioTracks": {
+    "deckA": "/assets/deckA.mp3",
+    "deckB": "/assets/deckB.mp3"
+  },
+  "events": [
+    { "id": "eq_low_a_bar_0",  "type": "cc", "control": "EQ_LOW_A", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 0     },
+    { "id": "eq_low_b_bar_0",  "type": "cc", "control": "EQ_LOW_B", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 0     },
+
+    { "id": "eq_low_a_bar_4",  "type": "cc", "control": "EQ_LOW_A", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 7500  },
+    { "id": "eq_low_b_bar_4",  "type": "cc", "control": "EQ_LOW_B", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 7500  },
+
+    { "id": "eq_low_a_bar_8",  "type": "cc", "control": "EQ_LOW_A", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 15000 },
+    { "id": "eq_low_b_bar_8",  "type": "cc", "control": "EQ_LOW_B", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 15000 },
+
+    { "id": "eq_low_a_bar_12", "type": "cc", "control": "EQ_LOW_A", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 22500 },
+    { "id": "eq_low_b_bar_12", "type": "cc", "control": "EQ_LOW_B", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 22500 },
+
+    { "id": "eq_low_a_bar_16", "type": "cc", "control": "EQ_LOW_A", "targetValue": 0.0, "tolerance": 0.10, "timestamp": 30000 },
+    { "id": "eq_low_b_bar_16", "type": "cc", "control": "EQ_LOW_B", "targetValue": 1.0, "tolerance": 0.10, "timestamp": 30000 },
+
+    { "id": "eq_low_a_bar_20", "type": "cc", "control": "EQ_LOW_A", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 37500 },
+    { "id": "eq_low_b_bar_20", "type": "cc", "control": "EQ_LOW_B", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 37500 },
+
+    { "id": "eq_low_a_bar_24", "type": "cc", "control": "EQ_LOW_A", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 45000 },
+    { "id": "eq_low_b_bar_24", "type": "cc", "control": "EQ_LOW_B", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 45000 },
+
+    { "id": "eq_low_a_bar_28", "type": "cc", "control": "EQ_LOW_A", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 52500 },
+    { "id": "eq_low_b_bar_28", "type": "cc", "control": "EQ_LOW_B", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 52500 },
+
+    { "id": "eq_low_a_bar_32", "type": "cc", "control": "EQ_LOW_A", "targetValue": 0.0, "tolerance": 0.15, "timestamp": 60000 },
+    { "id": "eq_low_b_bar_32", "type": "cc", "control": "EQ_LOW_B", "targetValue": 1.0, "tolerance": 0.15, "timestamp": 60000 }
+  ]
+}

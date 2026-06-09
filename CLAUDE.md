@@ -192,6 +192,7 @@ spec mandates this (source nodes are single-use). New sources attach to
 | `src/engine/types.ts`           | ✅ Complete |
 | `src/engine/level1.json`        | ✅ Complete |
 | `src/engine/level2.json`        | ✅ Complete |
+| `src/engine/level3.json`        | ✅ Complete |
 | `src/engine/scoringEngine.ts`   | ✅ Complete |
 | `src/engine/midiAudioBridge.ts` | ✅ Complete |
 | `src/engine/gameLoop.ts`        | ✅ Complete |
@@ -242,3 +243,9 @@ spec mandates this (source nodes are single-use). New sources attach to
 
 PLAY_A events in Level 1 land at: **0 ms, 15 000 ms, 30 000 ms, 45 000 ms**
 (bars 0, 8, 16, 24). Tolerance: ±150 ms.
+
+**Level 3 — The Swap:** the final checkpoint (bar 32, 60 000 ms) coincides with
+`levelDurationMs`. The game loop calls `complete()` on the first tick where
+`t >= 60 000`, so bar-32 events are scoreable only if the player moves the EQ
+before that tick fires (~16 ms window at 60 fps). Treat bar 32 as a grace
+checkpoint — unscored is acceptable; the prior 8 checkpoints carry the grade.
