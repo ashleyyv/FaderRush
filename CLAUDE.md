@@ -179,20 +179,19 @@ spec mandates this (source nodes are single-use). New sources attach to
 | `src/components/Preflight.tsx`  | ✅ Complete |
 | `src/components/NoteHighway.tsx`| ✅ Complete |
 | `src/components/Level1.tsx`     | ✅ Complete |
-| `src/App.tsx`                   | ⚠️ Placeholder — not wired to Level1 |
-| `src/assets/audio/`             | ❌ Empty — no audio files |
+| `src/App.tsx`                   | ✅ Mounts `<Level1 />` |
+| `public/assets/deckA.mp3`       | ⚠️ Silent placeholder (WAV in .mp3, gitignored) |
+| `public/assets/deckB.mp3`       | ⚠️ Silent placeholder (WAV in .mp3, gitignored) |
 | `src/levels/`                   | ❌ Empty — reserved for future levels |
 
 ---
 
 ## Not Yet Built
 
-- **`src/App.tsx`** — currently the Vite scaffold placeholder. Needs to mount
-  `<Level1 />` (or a level-select router once multiple levels exist).
-
-- **Audio assets** — `level1.json` references `/assets/audio/level1_deckA.mp3`
-  and `/assets/audio/level1_deckB.mp3`. No files exist yet. `audioEngine.init()`
-  will throw on `fetch` until real files are placed in `public/assets/audio/`.
+- **Audio assets** — `public/assets/deckA.mp3` and `deckB.mp3` are 60-second
+  silent WAV containers with `.mp3` extension (generated placeholder, gitignored).
+  Replace with real tracks; `decodeAudioData` reads magic bytes so any supported
+  format works regardless of extension.
 
 - **Level 2+** — `src/levels/` is empty. Additional levels need a JSON config
   following the `LevelConfig` interface and a corresponding React component (or

@@ -21,3 +21,6 @@ Thumbs.db
 
 # Claude Code local settings (permissions, hooks — not shared config)
 .claude/settings.local.json
+
+# Placeholder / large audio assets — replace with real files locally
+public/assets/*.mp3
