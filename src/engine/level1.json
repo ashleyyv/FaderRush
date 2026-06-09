@@ -1,0 +1,44 @@
+{
+  "id": "level_1",
+  "name": "The Drop",
+  "bpm": 128,
+  "totalBars": 32,
+  "audioTracks": {
+    "deckA": "/assets/deckA.mp3",
+    "deckB": "/assets/deckB.mp3"
+  },
+  "events": [
+    {
+      "id": "play_a_bar_0",
+      "type": "note",
+      "control": "PLAY_A",
+      "targetValue": 1,
+      "tolerance": 150,
+      "timestamp": 0
+    },
+    {
+      "id": "play_a_bar_8",
+      "type": "note",
+      "control": "PLAY_A",
+      "targetValue": 1,
+      "tolerance": 150,
+      "timestamp": 15000
+    },
+    {
+      "id": "play_a_bar_16",
+      "type": "note",
+      "control": "PLAY_A",
+      "targetValue": 1,
+      "tolerance": 150,
+      "timestamp": 30000
+    },
+    {
+      "id": "play_a_bar_24",
+      "type": "note",
+      "control": "PLAY_A",
+      "targetValue": 1,
+      "tolerance": 150,
+      "timestamp": 45000
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.canvas {
+  display: block;
+  width: 100%;
+  /* height is set imperatively via canvas.height — CSS height must match
+     the CANVAS_HEIGHT constant to prevent vertical stretch */
+  height: 400px;
+  border-radius: 4px;
+  overflow: hidden;
+}

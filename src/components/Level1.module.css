@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.loading {
+  color: #555;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+/* ── HUD (playing) ──────────────────────────────────────────────── */
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem 0.75rem;
+}
+
+.hudLevel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #555;
+}
+
+.hudScore {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hudScoreLabel {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #444;
+}
+
+.hudScoreValue {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: #f0f0f0;
+}
+
+/* ── Results ─────────────────────────────────────────────────────── */
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.resultsTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+}
+
+.finalScoreWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.finalScoreLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #555;
+}
+
+.finalScore {
+  font-size: 5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.scoreGreen  { color: #66bb6a; }
+.scoreAmber  { color: #ffa726; }
+.scoreRed    { color: #ef5350; }
+
+/* ── Event breakdown ─────────────────────────────────────────────── */
+
+.breakdown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bRow {
+  display: grid;
+  grid-template-columns: 1fr 5rem 4rem 5rem;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  gap: 0.5rem;
+}
+
+.bHeader {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #444;
+  background: transparent;
+}
+
+.bHit      { background: #0d1f0d; color: #c8e6c9; }
+.bMiss     { background: #1f0d0d; color: #ffcdd2; }
+.bUnscored { background: #151515; color: #555; }
+
+/* ── Retry button ────────────────────────────────────────────────── */
+
+.retryBtn {
+  padding: 0.65rem 2.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #1e1e1e;
+  color: #aaa;
+  transition: background 0.15s, color 0.15s;
+}
+
+.retryBtn:hover  { background: #2a2a2a; color: #f0f0f0; }
+.retryBtn:active { background: #333; }
