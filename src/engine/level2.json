@@ -1,0 +1,38 @@
+{
+  "id": "level_2",
+  "name": "The Blend",
+  "bpm": 128,
+  "totalBars": 32,
+  "audioTracks": {
+    "deckA": "/assets/deckA.mp3",
+    "deckB": "/assets/deckB.mp3"
+  },
+  "events": [
+    { "id": "fader_a_bar_8",  "type": "cc", "control": "FADER_A", "targetValue": 1.000, "tolerance": 0.05, "timestamp": 15000 },
+    { "id": "fader_b_bar_8",  "type": "cc", "control": "FADER_B", "targetValue": 0.000, "tolerance": 0.05, "timestamp": 15000 },
+
+    { "id": "fader_a_bar_10", "type": "cc", "control": "FADER_A", "targetValue": 0.875, "tolerance": 0.05, "timestamp": 18750 },
+    { "id": "fader_b_bar_10", "type": "cc", "control": "FADER_B", "targetValue": 0.125, "tolerance": 0.05, "timestamp": 18750 },
+
+    { "id": "fader_a_bar_12", "type": "cc", "control": "FADER_A", "targetValue": 0.750, "tolerance": 0.05, "timestamp": 22500 },
+    { "id": "fader_b_bar_12", "type": "cc", "control": "FADER_B", "targetValue": 0.250, "tolerance": 0.05, "timestamp": 22500 },
+
+    { "id": "fader_a_bar_14", "type": "cc", "control": "FADER_A", "targetValue": 0.625, "tolerance": 0.05, "timestamp": 26250 },
+    { "id": "fader_b_bar_14", "type": "cc", "control": "FADER_B", "targetValue": 0.375, "tolerance": 0.05, "timestamp": 26250 },
+
+    { "id": "fader_a_bar_16", "type": "cc", "control": "FADER_A", "targetValue": 0.500, "tolerance": 0.05, "timestamp": 30000 },
+    { "id": "fader_b_bar_16", "type": "cc", "control": "FADER_B", "targetValue": 0.500, "tolerance": 0.05, "timestamp": 30000 },
+
+    { "id": "fader_a_bar_18", "type": "cc", "control": "FADER_A", "targetValue": 0.375, "tolerance": 0.05, "timestamp": 33750 },
+    { "id": "fader_b_bar_18", "type": "cc", "control": "FADER_B", "targetValue": 0.625, "tolerance": 0.05, "timestamp": 33750 },
+
+    { "id": "fader_a_bar_20", "type": "cc", "control": "FADER_A", "targetValue": 0.250, "tolerance": 0.05, "timestamp": 37500 },
+    { "id": "fader_b_bar_20", "type": "cc", "control": "FADER_B", "targetValue": 0.750, "tolerance": 0.05, "timestamp": 37500 },
+
+    { "id": "fader_a_bar_22", "type": "cc", "control": "FADER_A", "targetValue": 0.125, "tolerance": 0.05, "timestamp": 41250 },
+    { "id": "fader_b_bar_22", "type": "cc", "control": "FADER_B", "targetValue": 0.875, "tolerance": 0.05, "timestamp": 41250 },
+
+    { "id": "fader_a_bar_24", "type": "cc", "control": "FADER_A", "targetValue": 0.000, "tolerance": 0.05, "timestamp": 45000 },
+    { "id": "fader_b_bar_24", "type": "cc", "control": "FADER_B", "targetValue": 1.000, "tolerance": 0.05, "timestamp": 45000 }
+  ]
+}

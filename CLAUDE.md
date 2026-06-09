@@ -5,6 +5,24 @@ DJ controller (Numark FLX4) to match MIDI cues scored against a timeline.
 
 ---
 
+## V1 Design Scope
+
+FaderRush V1 is tailored for **house music DJs**. Levels are structured around
+the core blend technique: managing channel faders and EQ across a standard
+32-bar phrase.
+
+**Primary scored mechanics (V1):**
+- Channel faders (`FADER_A`, `FADER_B`) — linear fade moves, blend crossings
+- EQ knobs (`EQ_HI_*`, `EQ_MID_*`, `EQ_LOW_*`) — frequency cuts and boosts
+
+**Mapped but unscored in V1:**
+- Crossfader — wired through `midiAudioBridge` and affects audio output
+  multiplicatively, but no `LevelConfig` events target `CROSSFADER`. It is
+  intentionally left as a free control so the player can use it naturally
+  without it being graded.
+
+---
+
 ## Folder Structure
 
 ```
@@ -173,6 +191,7 @@ spec mandates this (source nodes are single-use). New sources attach to
 | `src/audio/audioEngine.ts`      | ✅ Complete |
 | `src/engine/types.ts`           | ✅ Complete |
 | `src/engine/level1.json`        | ✅ Complete |
+| `src/engine/level2.json`        | ✅ Complete |
 | `src/engine/scoringEngine.ts`   | ✅ Complete |
 | `src/engine/midiAudioBridge.ts` | ✅ Complete |
 | `src/engine/gameLoop.ts`        | ✅ Complete |
