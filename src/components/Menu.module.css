@@ -1,0 +1,175 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 4rem;
+  gap: 3rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f0f0f0;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #3a3a3a;
+  margin-top: 0.45rem;
+}
+
+/* ── Card grid ───────────────────────────────────────────────────── */
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 860px;
+}
+
+@media (max-width: 680px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+}
+
+/* ── Card ────────────────────────────────────────────────────────── */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 1.25rem 1.25rem;
+  border-radius: 6px;
+  border: 1px solid #1a1a1a;
+  background: #090909;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  font-family: inherit;
+  color: inherit;
+}
+
+.cardUnlocked:hover  { border-color: #303030; background: #0f0f0f; }
+.cardUnlocked:active { background: #141414; }
+
+.cardLocked {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ── Card content ────────────────────────────────────────────────── */
+
+.cardNum {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: #333;
+  font-weight: 600;
+}
+
+.cardName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #f0f0f0;
+  line-height: 1.15;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ── Skill badges ────────────────────────────────────────────────── */
+
+.skillBadge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+.skillPhrasing {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+}
+
+.skillVolume {
+  background: rgba(45, 212, 191, 0.15);
+  color: #5eead4;
+}
+
+.skillEq {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fcd34d;
+}
+
+/* ── Difficulty badge ────────────────────────────────────────────── */
+
+.diffBadge {
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3a3a3a;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  border: 1px solid #1e1e1e;
+}
+
+/* ── Score area ──────────────────────────────────────────────────── */
+
+.cardScore {
+  margin-top: 0.5rem;
+  min-height: 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.scoreLabel {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #3a3a3a;
+}
+
+.scoreVal {
+  font-size: 1.9rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.scoreGreen { color: #66bb6a; }
+.scoreAmber { color: #ffa726; }
+
+.scoreNew {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #2a2a2a;
+}
+
+.lockMsg {
+  font-size: 0.72rem;
+  color: #3a3a3a;
+  line-height: 1.45;
+}

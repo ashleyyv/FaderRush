@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import level1Json from '../engine/level1.json'
 import type { LevelConfig, LevelSession } from '../engine/types'
 import { createGameLoop } from '../engine/gameLoop'
 import type { GameLoop } from '../engine/gameLoop'
@@ -8,9 +7,6 @@ import { getSessionScore } from '../engine/scoringEngine'
 import { Preflight } from './Preflight'
 import { NoteHighway } from './NoteHighway'
 import styles from './Level1.module.css'
-
-// Cast once at module level — JSON matches LevelConfig, tsc can't infer the literal union
-const config = level1Json as unknown as LevelConfig
 
 type Phase = 'preflight' | 'playing' | 'results'
 
@@ -28,16 +24,18 @@ const CONTROL_LABELS: Record<string, string> = {
 
 interface ResultsProps {
   session: LevelSession
+  levelName: string
   onRetry: () => void
+  onBack: () => void
 }
 
-function ResultsView({ session, onRetry }: ResultsProps) {
-  const finalScore   = getSessionScore(session)
+function ResultsView({ session, levelName, onRetry, onBack }: ResultsProps) {
+  const finalScore    = getSessionScore(session)
   const scoredByEvent = new Map(session.scored.map(s => [s.eventId, s]))
 
   return (
     <div className={styles.results}>
-      <h2 className={styles.resultsTitle}>{config.name}</h2>
+      <h2 className={styles.resultsTitle}>{levelName}</h2>
 
       <div className={styles.finalScoreWrap}>
         <span className={styles.finalScoreLabel}>Final Score</span>
@@ -50,7 +48,6 @@ function ResultsView({ session, onRetry }: ResultsProps) {
         </span>
       </div>
 
-      {/* Per-event breakdown */}
       <div className={styles.breakdown}>
         <div className={`${styles.bRow} ${styles.bHeader}`}>
           <span>Control</span>
@@ -82,16 +79,22 @@ function ResultsView({ session, onRetry }: ResultsProps) {
         })}
       </div>
 
-      <button className={styles.retryBtn} onClick={onRetry}>
-        Retry
-      </button>
+      <div className={styles.actions}>
+        <button className={styles.backBtn} onClick={onBack}>← Menu</button>
+        <button className={styles.retryBtn} onClick={onRetry}>Retry</button>
+      </div>
     </div>
   )
 }
 
 // ── Main component ────────────────────────────────────────────────────────
 
-export function Level1() {
+interface Level1Props {
+  levelConfig: LevelConfig
+  onBack: () => void
+}
+
+export function Level1({ levelConfig, onBack }: Level1Props) {
   const [phase,        setPhase]        = useState<Phase>('preflight')
   const [currentTime,  setCurrentTime]  = useState(0)
   const [meanScore,    setMeanScore]    = useState(0)
@@ -102,18 +105,15 @@ export function Level1() {
 
   // ── Transition: preflight → playing ────────────────────────────────────
   const startPlaying = useCallback(async () => {
-    // AudioContext and MIDI access both require a prior user gesture — this
-    // callback is always triggered by the "Start Level" button click.
     if (!midiReadyRef.current) {
       await midiManager.init()
       midiReadyRef.current = true
     }
 
-    const loop = createGameLoop(config, {
+    const loop = createGameLoop(levelConfig, {
       onTick: setCurrentTime,
 
       onScore: () => {
-        // session.scored was already mutated by scoreInput before this fires
         const s = loopRef.current?.session
         if (s) setMeanScore(getSessionScore(s))
       },
@@ -122,13 +122,19 @@ export function Level1() {
         const s = loopRef.current?.session
         setFinalSession(s ?? null)
         setPhase('results')
+        if (s) {
+          const score = getSessionScore(s)
+          const key   = `faderrush_best_${levelConfig.id}`
+          const prev  = parseFloat(localStorage.getItem(key) ?? '0')
+          if (score > prev) localStorage.setItem(key, score.toString())
+        }
       },
     })
 
     loopRef.current = loop
-    void loop.start()   // session is created synchronously before first await
+    void loop.start()
     setPhase('playing')
-  }, [])
+  }, [levelConfig])
 
   // ── Transition: results → preflight (retry) ─────────────────────────────
   const retry = useCallback(() => {
@@ -148,7 +154,10 @@ export function Level1() {
   if (phase === 'preflight') {
     return (
       <div className={styles.container}>
-        <Preflight levelConfig={config} onComplete={startPlaying} />
+        <div className={styles.topBar}>
+          <button className={styles.backBtn} onClick={onBack}>← Menu</button>
+        </div>
+        <Preflight levelConfig={levelConfig} onComplete={startPlaying} />
       </div>
     )
   }
@@ -162,7 +171,7 @@ export function Level1() {
     return (
       <div className={styles.container}>
         <div className={styles.hud}>
-          <span className={styles.hudLevel}>{config.name}</span>
+          <span className={styles.hudLevel}>{levelConfig.name}</span>
           <div className={styles.hudScore}>
             <span className={styles.hudScoreLabel}>Score</span>
             <span className={styles.hudScoreValue}>{meanScore.toFixed(0)}</span>
@@ -176,7 +185,12 @@ export function Level1() {
   if (phase === 'results' && finalSession) {
     return (
       <div className={styles.container}>
-        <ResultsView session={finalSession} onRetry={retry} />
+        <ResultsView
+          session={finalSession}
+          levelName={levelConfig.name}
+          onRetry={retry}
+          onBack={onBack}
+        />
       </div>
     )
   }
